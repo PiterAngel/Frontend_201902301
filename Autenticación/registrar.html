@@ -1,0 +1,125 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registrar</title>
+   <!--Made with love by Mutiullah Samim -->
+   
+	<!--Bootsrap 4 CDN-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+	<!--Custom styles-->
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header">
+				<h3>Registrar :3</h3>
+				
+			</div>
+			<div class="card-body">
+				<form>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input id="nombre"type="text" class="form-control" placeholder="Nombre">
+						
+					</div>
+
+                    <div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
+						</div>
+						<input id="genero" type="text" class="form-control" placeholder="Género">
+					</div>
+
+                    <div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input id="nombre_de_usuario" type="text" class="form-control" placeholder="Nombre de Usuario">
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-envelope"></i></span>
+						</div>
+						<input id="correo" type="text" class="form-control" placeholder="Correo">
+					</div>
+
+                    <div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input id="contraseña" type="password" class="form-control" placeholder="Contraseña">
+					</div>
+
+                   
+
+					
+					<div class="form-group">
+						<button onclick = "olaa()" type="button"  class="btn float-right login_btn"> Registrar   </button>
+					</div>
+				</form>
+			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					Tienes una cuenta? 7w7<a href="iniciar.html">Inicia Sesión e.e</a>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	function olaa(){
+		var nombre = document.querySelector('#nombre').value 
+		var genero = document.querySelector('#genero').value
+		var nombreusuario = document.querySelector('#nombre_de_usuario').value
+		var correo = document.querySelector('#correo').value
+		var contraxd = document.querySelector('#contraseña').value 
+		
+		var objetoxd = {
+			'name':nombre,
+			'gender': genero,
+			'username': nombreusuario,
+			'email': correo,
+			'password':contraxd
+		}
+		fetch ('http://localhost:3000/Registrar', {
+                method: 'POST',
+                body: JSON.stringify(objetoxd),
+                headers:{
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',}})
+            .then(res => res.json())
+            .catch(err => {
+                console.error('Error:', err)
+                alert("Ocurrio un error, ver la consola")
+            })
+            .then(response =>{
+                console.log(response);
+                alert(response.Mensaje)
+				if (response.Entrar=="SI"){
+					location.href="iniciar.html"
+				}
+            })
+
+	}
+
+
+</script>
+
+
+
+</body>
+</html>
