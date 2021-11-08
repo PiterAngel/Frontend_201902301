@@ -65,7 +65,7 @@
 			'user': nombreusuario,
 			'contras':contraxd
 		}
-		fetch ('https://backendp2-201902301.herokuapp.com/Iniciar', {
+		fetch ('http://localhost:3000/Iniciar', {
                 method: 'POST',
                 body: JSON.stringify(objetoxd),
                 headers:{
@@ -83,12 +83,13 @@
 					location.href="../Administrador/dashboard.html"
 					console.log("ola admin ;)")
 				}
-				else if (response.Tipo=="Nadie"){
-					console.log("Ola Nadie xd")
-				}
-				else if (respone.Tipo=="Usuario"){
+				
+				else if (response.Tipo=="Usuario"){
 					location.href="../publicaciones.html"
 					console.log("Ola Usuario ;)")
+				}
+				else if (response.Tipo=="Nadie"){
+					console.log("Ola Nadie xd")
 				}
 
             ;})
@@ -101,21 +102,7 @@
 
 
 
-<!--Made with love by Mutiullah 
-	<script>
-	function validate(){
-		var username = document.getElementById("username").value;
-		var password = document.getElementById("password").value;
-		if(username == "username" && password == "password"){
-			alert ("Ingreso exitoso");
-			window.location = "https://"
-		};
 
-	}
-
-</script>
-	
-	Samim -->
 
 
 
